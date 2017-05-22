@@ -1,0 +1,20 @@
+C:\Users\student.NMKZLLAB\Documents\143349\lab11\lab11\bin\Debug\lab11.exe.config
+C:\Users\student.NMKZLLAB\Documents\143349\lab11\lab11\bin\Debug\lab11.exe
+C:\Users\student.NMKZLLAB\Documents\143349\lab11\lab11\bin\Debug\lab11.pdb
+C:\Users\student.NMKZLLAB\Documents\143349\lab11\lab11\bin\Debug\EasyNetQ.dll
+C:\Users\student.NMKZLLAB\Documents\143349\lab11\lab11\bin\Debug\RabbitMQ.Client.dll
+C:\Users\student.NMKZLLAB\Documents\143349\lab11\lab11\bin\Debug\EasyNetQ.xml
+C:\Users\student.NMKZLLAB\Documents\143349\lab11\lab11\bin\Debug\RabbitMQ.Client.xml
+C:\Users\student.NMKZLLAB\Documents\143349\lab11\lab11\obj\Debug\lab11.csprojResolveAssemblyReference.cache
+C:\Users\student.NMKZLLAB\Documents\143349\lab11\lab11\obj\Debug\lab11.exe
+C:\Users\student.NMKZLLAB\Documents\143349\lab11\lab11\obj\Debug\lab11.pdb
+D:\sosenka\Nowy folder\sem4_2017\rozprochy\lab11\lab11\lab11\bin\Debug\lab11.exe.config
+D:\sosenka\Nowy folder\sem4_2017\rozprochy\lab11\lab11\lab11\obj\Debug\lab11.exe
+D:\sosenka\Nowy folder\sem4_2017\rozprochy\lab11\lab11\lab11\obj\Debug\lab11.pdb
+D:\sosenka\Nowy folder\sem4_2017\rozprochy\lab11\lab11\lab11\bin\Debug\lab11.exe
+D:\sosenka\Nowy folder\sem4_2017\rozprochy\lab11\lab11\lab11\bin\Debug\lab11.pdb
+D:\sosenka\Nowy folder\sem4_2017\rozprochy\lab11\lab11\lab11\bin\Debug\EasyNetQ.dll
+D:\sosenka\Nowy folder\sem4_2017\rozprochy\lab11\lab11\lab11\bin\Debug\RabbitMQ.Client.dll
+D:\sosenka\Nowy folder\sem4_2017\rozprochy\lab11\lab11\lab11\bin\Debug\EasyNetQ.xml
+D:\sosenka\Nowy folder\sem4_2017\rozprochy\lab11\lab11\lab11\bin\Debug\RabbitMQ.Client.xml
+D:\sosenka\Nowy folder\sem4_2017\rozprochy\lab11\lab11\lab11\obj\Debug\lab11.csprojResolveAssemblyReference.cache
