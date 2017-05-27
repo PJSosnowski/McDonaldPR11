@@ -16,8 +16,6 @@ namespace lab11
         static ConnectionFactory factory = new ConnectionFactory();
         static void Main(string[] args)
         {
-            //factory.Uri = "amqp://user:pass@hostName:port/vhost";
-            //factory.Uri = "amqp://ciytdxcx:J-vYXXMw7_1-_odJMT0wr_Ri4ToPNaP7@puma.rmq.cloudamqp.com:5672/ciytdxcx";
             factory.UserName = "ciytdxcx";
             factory.Password = "J-vYXXMw7_1-_odJMT0wr_Ri4ToPNaP7";
             factory.VirtualHost = "ciytdxcx";
@@ -25,18 +23,17 @@ namespace lab11
             IConnection conn = factory.CreateConnection();
 
             IModel channel = conn.CreateModel();
+            IModel channel2 = conn.CreateModel();
 
-            channel.ExchangeDeclare("test1", ExchangeType.Direct);
-            //channel.QueueDeclare(queueName, false, false, false, null);
-            //channel.QueueBind(queueName, exchangeName, routingKey, null);
+            channel.ExchangeDeclare("KasaKuchniaExchange", ExchangeType.Direct, true);
 
             Thread kasa = new Thread(() =>
             {
                 while(true)
                 {
-                    Console.WriteLine("Kasa: Wyslano dane do exchange'a z zamowieniem hambuergera");
-                    byte[] messageBodyBytes = System.Text.Encoding.UTF8.GetBytes("Poprosze hambixa");
-                    channel.BasicPublish("test1", "", null, messageBodyBytes);
+                    byte[] messageBodyBytes = System.Text.Encoding.UTF8.GetBytes("Hamburger");
+                    channel.BasicPublish("KasaKuchniaExchange", "", null, messageBodyBytes);
+                    Console.WriteLine("Kasa: Wyslano dane do exchange'a z zamowieniem hambuergera\n");
                     Thread.Sleep(1000);
                 }
             });
@@ -55,13 +52,42 @@ namespace lab11
                     {
                         IBasicProperties props = result.BasicProperties;
                         byte[] body = result.Body;
-                        Console.WriteLine("Klient: otrzymalem hamburgera!");
+                        Console.WriteLine("Kuchnia: otrzymalem zamowienie hamburgera");
                         channel.BasicAck(result.DeliveryTag, false);
+
+                        Console.WriteLine("Kuchnia: wysylam info do magazynu o zrobieniu hamburgera");
+                        byte[] messageBodyBytes = System.Text.Encoding.UTF8.GetBytes("Hamburger");
+                        channel.BasicPublish("MagazynExchange", "", null, messageBodyBytes);
+
+                        Console.WriteLine("Kuchnia: wysylam hamburgera do klienta\n");
+                        messageBodyBytes = System.Text.Encoding.UTF8.GetBytes("Hamburger");
+                        channel.BasicPublish("KuchniaKlientExchange", "", null, messageBodyBytes);
                     }
                 }
              });
+
+            Thread klient = new Thread(() =>
+            {
+                bool noAck = false;
+                while(true)
+                {
+                    RabbitMQ.Client.BasicGetResult result = channel2.BasicGet("kolejkaPrzedKlientem", noAck);
+                    if (result == null)
+                    {
+                        // No message available at this time.
+                    }
+                    else
+                    {
+                        IBasicProperties props = result.BasicProperties;
+                        byte[] body = result.Body;
+                        Console.WriteLine("Klient: otrzymalem hamburger, pyszniutki!\n");
+                        channel2.BasicAck(result.DeliveryTag, false);
+                    }
+                }
+            });
             kasa.Start();
             kuchnia.Start();
+            klient.Start();
         }
 
 

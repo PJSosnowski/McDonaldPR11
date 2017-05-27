@@ -1,0 +1,9 @@
+https://www.rabbitmq.com/dotnet-api-guide.html
+
+https://www.rabbitmq.com/tutorials/tutorial-two-dotnet.html
+
+https://www.rabbitmq.com/clients.html
+
+http://easynetq.com/
+
+https://customer.cloudamqp.com/login
